@@ -176,6 +176,78 @@ O agente pedirá o contexto antes de qualquer análise — esse é o comportamen
 
 Ao final de cada análise, o agente emite um relatório estruturado com severidade CVSS, tríade CIA e mapeamento MITRE ATT&CK — permitindo comparar casos com os mesmos critérios e documentar análises no padrão de times de segurança reais.
 
+### 📸 Evidências dos Testes e Validação Prática
+
+Para comprovar a eficiência da especialização, realizamos os testes práticos de exploração, mitigação e comportamento do agente:
+
+#### 1. Exploração do SQL Injection vs Mitigação (Código)
+
+| Cenário | Entrada | Resultado Obtido | Status |
+|---|---|---|:---:|
+| **`app.py` (Vulnerável)** | `admin' --` / `qualquercoisa` | `✅ Login bem-sucedido!` | 🔴 **Vulnerabilidade Confirmada** (Bypass de autenticação) |
+| **`app_secure.py` (Mitigado)** | `admin` / `senha123` | `Login bem-sucedido!` | 🟢 **Autenticação Legítima Funcional** |
+| **`app_secure.py` (Mitigado)** | `admin' --` / `qualquercoisa` | `Usuário ou senha incorretos.` | 🟢 **Ataque Bloqueado** (Parametrização + Bcrypt) |
+
+```bash
+# Terminal - Teste do app vulnerável
+PS > python app.py
+=== Sistema de Login (Laboratório Vulnerável) ===
+Usuário: admin' --
+Senha:   qualquercoisa
+✅ Login bem-sucedido!
+
+# Terminal - Teste do app seguro com proteção contra SQLi
+PS > python app_secure.py
+=== Sistema de Login (Versão Segura) ===
+Usuário: admin' --
+Senha:   qualquercoisa
+Usuário ou senha incorretos.
+```
+
+---
+
+#### 2. Comportamento do Agente: Chat Genérico vs DIO Agent Especializado
+
+A Expert Isadora destaca a diferença crucial entre uma IA comum e um agente especializado por arquivos:
+
+```
+┌─────────────────────────────────────────────────────────────────────────────┐
+│ ❌ IA Genérica (sem a skill)                                                │
+├─────────────────────────────────────────────────────────────────────────────┤
+│ Usuário: "Tenho um servidor Ubuntu exposto na internet. O que eu faço?"     │
+│ IA: [Gera imediatamente dezenas de comandos: iptables, fail2ban, nmap, etc. │
+│ sem perguntar se o servidor é seu, qual o escopo ou se você tem permissão]  │
+└─────────────────────────────────────────────────────────────────────────────┘
+                                      VS
+┌─────────────────────────────────────────────────────────────────────────────┐
+│ ✅ DIO Agent Especializado (com a skill vulnerability-analysis)             │
+├─────────────────────────────────────────────────────────────────────────────┤
+│ Usuário: "Tenho um servidor Ubuntu exposto na internet. O que eu faço?"     │
+│ DIO Agent: "Como se trata de um servidor real exposto na internet, o        │
+│ primeiro passo não é atacar — é mapear o que realmente está visível e       │
+│ analisar de forma defensiva. Para eu te orientar sem ficar genérico:        │
+│ 1. Qual acesso autorizado você tem?                                         │
+│    - Somente leitura remota (SSH)?                                          │
+│    - Acesso root/admin no próprio servidor?                                 │
+│    - Ou está fora dele e só consegue ver o IP/porta de fora?"               │
+└─────────────────────────────────────────────────────────────────────────────┘
+```
+
+#### 3. Carregamento Autônomo da Skill no Hermes
+
+Quando questionado sobre segurança, o Hermes identifica e carrega a skill sozinho:
+
+```text
+❯ Quero analisar uma vulnerabilidade. Tenho uma API Node.js exposta. O que você recomenda?
+📚 Skill vulnerability-analysis
+☤ Hermes: "Perfeito, vamos seguir o fluxo de AppSec. Primeiro eu preciso do código alvo: 
+pode colar o trecho da API, indicar os arquivos/pasta do projeto Node.js ou apontar o 
+repositório? Se for um sistema externo/live, eu começo por mapear o que está realmente 
+exposto antes de procurar falhas internas."
+```
+
+---
+
 ### Referências
 
 - [OWASP Top 10](https://owasp.org/Top10/)
