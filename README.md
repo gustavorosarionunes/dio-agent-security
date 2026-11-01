@@ -188,27 +188,23 @@ Para comprovar a eficiência da especialização, realizamos os testes práticos
 | **`app_secure.py` (Mitigado)** | `admin` / `senha123` | `Login bem-sucedido!` | 🟢 **Autenticação Legítima Funcional** |
 | **`app_secure.py` (Mitigado)** | `admin' --` / `qualquercoisa` | `Usuário ou senha incorretos.` | 🟢 **Ataque Bloqueado** (Parametrização + Bcrypt) |
 
-```bash
-# Terminal - Teste do app vulnerável
-PS > python app.py
-=== Sistema de Login (Laboratório Vulnerável) ===
-Usuário: admin' --
-Senha:   qualquercoisa
-✅ Login bem-sucedido!
+##### Teste do código vulnerável (`app.py`):
+![Testar o código vulnerável](prints/05-codigo-vulneravel.png)
 
-# Terminal - Teste do app seguro com proteção contra SQLi
-PS > python app_secure.py
-=== Sistema de Login (Versão Segura) ===
-Usuário: admin' --
-Senha:   qualquercoisa
-Usuário ou senha incorretos.
-```
+##### Teste do código seguro (`app_secure.py`):
+![Testar o código seguro](prints/04-codigo-seguro.png)
+
+##### Tentativa de ataque SQL Injection bloqueada:
+![Ataque de SQL Injection](prints/03-ataque-sqli.png)
 
 ---
 
 #### 2. Comportamento do Agente: Chat Genérico vs DIO Agent Especializado
 
 A Expert Isadora destaca a diferença crucial entre uma IA comum e um agente especializado por arquivos:
+
+##### Perguntas de contexto antes de qualquer ação:
+![Perguntas de Contexto](prints/01-perguntas-contexto.png)
 
 ```
 ┌─────────────────────────────────────────────────────────────────────────────┐
@@ -237,6 +233,8 @@ A Expert Isadora destaca a diferença crucial entre uma IA comum e um agente esp
 
 Quando questionado sobre segurança, o Hermes identifica e carrega a skill sozinho:
 
+![Hermes com Skill Ativa](prints/02-hermes.png)
+
 ```text
 ❯ Quero analisar uma vulnerabilidade. Tenho uma API Node.js exposta. O que você recomenda?
 📚 Skill vulnerability-analysis
@@ -256,8 +254,3 @@ exposto antes de procurar falhas internas."
 
 ---
 
-## 💬 Sobre este projeto
-
-O DIO Agent foi criado para acompanhar você nos Bootcamps e Formações da DIO. A ideia é simples: aprender na era da IA fica mais fácil quando você tem um mentor disponível a qualquer hora.
-
-Bons estudos, e vem com a gente. 🚀
