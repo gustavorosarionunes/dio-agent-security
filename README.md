@@ -1,256 +1,104 @@
-# 🤖 DIO Agent
+# DIO Agent — Especialização em Cibersegurança (AppSec)
 
-> Seu mentor com Inteligência Artificial para aprender mais e melhor na [DIO](https://dio.me).
+Projeto desenvolvido durante o Desafio de Projeto da [DIO](https://dio.me) sobre criação e especialização de agentes de inteligência artificial.
 
-O **DIO Agent** é um agente de IA que acompanha você na sua jornada de estudos. Ele conhece as experiências da DIO (Bootcamps, Formações, Cursos, Desafios e muito mais) e ajuda você a estudar, praticar e planejar a sua carreira.
-
-Você não precisa saber programar nem instalar nada complicado. Em **3 passos**, o seu mentor está pronto para usar.
+Neste projeto, evoluí o **DIO Agent** para atuar como um mentor especialista em **Cibersegurança e Application Security (AppSec)**. Em vez de simplesmente entregar respostas prontas ou gerar comandos invasivos sem critério, o agente analisa vulnerabilidades com mentalidade defensiva, entende o contexto antes de agir, avalia riscos e conduz o estudante na correção do código.
 
 ---
 
-## ✨ Três palavras para começar
+## 🎯 Por que essa especialização?
 
-- 🧠 **Agente de IA:** um chatbot responde perguntas. Um *agente* vai além: lê, planeja e executa passos para ajudar você a alcançar um objetivo. É a diferença entre alguém que explica o caminho e alguém que caminha junto com você.
-- 🖥️ **Harness:** é o programa onde o agente roda. O agente é o mentor, e o harness é a sala onde vocês se encontram. O mesmo mentor atende em salas diferentes, por isso o DIO Agent funciona em vários harnesses.
-- 🧩 **Skill:** é uma habilidade do agente, descrita em um guia passo a passo. Você não precisa chamar a skill: o agente percebe o que você precisa e usa a certa sozinho.
-
-Esses e outros termos estão no [Glossário](docs/glossary.md).
+No desenvolvimento de software, muitos erros de segurança acontecem porque quem programa não aprendeu a pensar como um atacante. A ideia desta especialização foi criar um mentor que ajude a desenvolver uma visão preventiva (DevSecOps), ensinando a identificar falhas graves — como SQL Injection e exposição de credenciais — e a corrigi-las de forma estruturada.
 
 ---
 
-## 🚀 Comece em 3 passos
+## 📁 Arquivos Criados e Alterados
 
-### 1️⃣ Instale um harness
+Para ensinar essa habilidade ao agente sem treinar nenhum modelo (usando apenas engenharia de contexto via arquivos), estruturei o projeto da seguinte forma:
 
-Recomendamos o **Google Antigravity**, que tem limites de uso generosos para quem está começando. Mas qualquer harness da lista funciona: escolha um e siga a instalação da documentação oficial dele.
-
-| Harness | Documentação oficial |
-|---------|----------------------|
-| Google Antigravity (recomendado) | https://antigravity.google/docs |
-| Claude Code | https://code.claude.com/docs |
-| Codex | https://developers.openai.com/codex |
-| OpenCode | https://opencode.ai/docs |
-| Hermes | https://hermes-agent.nousresearch.com/docs |
-
-### 2️⃣ Baixe o DIO Agent e abra no harness
-
-Baixe este repositório do jeito mais simples para você:
-
-- **Com Git:** no terminal, rode `git clone https://github.com/digitalinnovationone/dio-agent.git`
-- **Sem Git:** no topo desta página, clique no botão verde **Code**, depois em **Download ZIP**, e extraia a pasta.
-
-Depois, abra no harness a pasta do projeto, a que tem o arquivo `AGENTS.md` (pelo Git, ela se chama `dio-agent`; pelo .zip, `dio-agent-main`). O harness lê esse arquivo sozinho, e o agente já sabe quem é: o seu mentor de estudos da DIO.
-
-### 3️⃣ Converse
-
-Fale naturalmente, com as suas palavras. Nas primeiras vezes, vale usar um dos [modelos de prompt](#-modelos-de-prompt) abaixo: quanto mais contexto você dá, melhor o agente ajuda.
-
----
-
-## 🧩 As skills do agente
-
-| Skill | Para que serve | Experimente pedir |
-|-------|----------------|-------------------|
-| [Plano de estudos](skills/study-plan/SKILL.md) | Organiza o que estudar, em que ordem e em quanto tempo | "Quero concluir este Bootcamp em 2 meses, me ajuda?" |
-| [Destravar desafio](skills/unblock-challenge/SKILL.md) | Conduz você até a solução de um desafio, sem dar a resposta pronta | "Travei nesse desafio, me ajuda?" |
-| [Explicar conceito](skills/explain-concept/SKILL.md) | Explica conceitos de forma simples, com analogias e exemplos | "Não entendi o que é uma API." |
-| [Pesquisa na web](skills/web-search/SKILL.md) | Responde dúvidas atuais (versões, lançamentos, mercado) com fontes citadas | "Qual a versão estável do Node hoje?" |
-| [Revisão de portfólio](skills/portfolio-review/SKILL.md) | Dá feedback sobre o seu portfólio e GitHub antes de buscar vagas | "O que falta no meu GitHub para uma vaga júnior?" |
-| [Caminho AI Builder](skills/ai-builder-path/SKILL.md) | Ajuda você a escolher o próximo passo na Carreira AI Builder | "Qual Formação AI Builder combina comigo?" |
-| [Análise de vulnerabilidade](skills/vulnerability-analysis/SKILL.md) | Conduz uma análise de segurança com você, no estilo AppSec | "Analise meu código como especialista em segurança." |
-
-A pesquisa na web usa a busca do seu harness. Se ele não tiver busca própria, veja [como conectar o You.com](docs/youcom-mcp.md), que tem uma opção gratuita.
-
----
-
-## 📝 Modelos de prompt
-
-Copie, preencha o que está entre colchetes e envie. Não precisa de formato perfeito: o agente pede mais detalhes se precisar.
-
-**🗺️ Plano de estudos**
-
-```
-Quero montar um plano de estudos.
-- Meu objetivo: [ex: ser dev back-end, concluir um Bootcamp]
-- O que quero fazer na DIO: [link ou nome do Bootcamp, Formação, Aceleração ou Carreira]
-- O que já tenho: [um plano de ação ou de estudos, se tiver]
-- Meu nível hoje: [iniciante, intermediário, avançado]
-- Tempo disponível: [ex: 1 hora por dia, de segunda a sexta]
-```
-
-**🔓 Destravar desafio**
-
-```
-Estou travado em um Desafio de [Código, Projeto ou Criativo] da DIO.
-- O que o desafio pede: [cole o enunciado ou, no Desafio de Projeto, o link do repositório do desafio]
-- Onde eu travei: [explique o ponto da dificuldade]
-- Meu código ou repositório: [cole o código ou o link, se tiver]
-Me ajuda a destravar sem dar a resposta pronta.
-```
-
-**💡 Explicar conceito**
-
-```
-Me explica o conceito de [ex: API, laço de repetição, herança].
-- Meu nível: [nunca vi, já ouvi falar, quero aprofundar]
-```
-
-**🧭 Caminho AI Builder**
-
-```
-Quero escolher meu próximo passo na Carreira AI Builder.
-- O que quero construir com IA: [ex: um produto para o meu negócio, um software, agentes que automatizam processos, ainda não sei]
-- Minha experiência com programação: [nenhuma, o básico, trabalho com desenvolvimento]
-- Meu objetivo: [ex: mudar de carreira, tirar uma ideia do papel]
-```
-
----
-
-## 🔄 Mantenha o DIO Agent atualizado
-
-O DIO Agent evolui com o tempo. Se você usou Git, rode `git pull` no terminal, dentro da pasta (ou peça para o próprio agente rodar). Se baixou o .zip, baixe de novo.
-
----
-
-## 🗂️ Estrutura do repositório
-
-```
-dio-agent/
-├── README.md                Este guia
-├── AGENTS.md                Definição do agente (lida pelo harness)
-├── CLAUDE.md                Atalho para o Claude Code
-├── agent/
-│   ├── persona.md           A personalidade e o tom do agente
-│   └── knowledge/           O que o agente sabe sobre a DIO
-├── skills/                  Uma pasta por skill, cada uma com o seu SKILL.md
-└── docs/
-    ├── glossary.md          Glossário de termos
-    └── youcom-mcp.md        Como conectar a busca do You.com
-```
-
----
-
-## 🤝 Contribua
-
-Tem uma ideia de skill? Veja [como criar uma skill](skills/README.md) e abra um pull request.
-
----
-
-## 🔐 Especialização em Cibersegurança (Desafio de Projeto DIO)
-
-Esta versão do DIO Agent foi evoluída como parte de um **Desafio de Projeto da DIO**, adicionando uma especialização em **análise de vulnerabilidades e AppSec** ao agente.
-
-### Por que essa especialização?
-
-A maioria dos desenvolvedores nunca aprendeu a pensar como um atacante — o que cria vulnerabilidades em sistemas que chegam à produção todos os dias. A skill de análise de vulnerabilidade ensina o estudante a **ver o código com olhos de segurança**, sem entregar respostas prontas.
-
-### O que foi adicionado
-
-| Arquivo | Tipo | Descrição |
+| Arquivo | Tipo | Função no Projeto |
 |---|---|---|
-| `skills/vulnerability-analysis/SKILL.md` | Novo | Roteiro de 6 passos que o agente segue ao conduzir uma análise AppSec |
-| `skills/vulnerability-analysis/README.md` | Novo | Documentação da skill para pessoas |
-| `agent/knowledge/security-basics.md` | Novo | Base de conhecimento: tríade CIA, CVSS, OWASP Top 10, MITRE ATT&CK, DevSecOps |
-| `app.py` | Novo | Aplicação de login vulnerável para laboratório (SQL Injection intencional) |
-| `app_secure.py` | Novo | Versão corrigida: consultas parametrizadas + bcrypt |
-| `agent/persona.md` | Alterado | Adicionada seção "Modo especialista: Segurança da Informação" |
-| `AGENTS.md` | Alterado | Adicionada a skill `vulnerability-analysis` na tabela de skills |
+| `skills/vulnerability-analysis/SKILL.md` | **Criado** | Roteiro de 6 passos que guia o agente durante a análise de uma vulnerabilidade. |
+| `skills/vulnerability-analysis/README.md` | **Criado** | Documentação explicando como e quando utilizar a skill. |
+| `agent/knowledge/security-basics.md` | **Criado** | Base de conhecimento com conceitos essenciais: Tríade CIA, OWASP Top 10, CVSS, MITRE ATT&CK e boas práticas. |
+| `agent/persona.md` | **Alterado** | Adição da postura de especialista em segurança (perguntar o contexto antes, não criar exploits e guiar o raciocínio). |
+| `AGENTS.md` | **Alterado** | Registro da nova skill na tabela oficial para o harness saber quando acioná-la. |
+| `app.py` | **Criado** | Código de laboratório com falha intencional de SQL Injection e senha em texto puro para testes. |
+| `app_secure.py` | **Criado** | Versão corrigida e segura utilizando consultas parametrizadas e hash de senha com `bcrypt`. |
 
-### Como testar a skill de segurança
+---
 
-Com o Hermes rodando **dentro da pasta do projeto**:
+## 🛠️ Como Rodar o Agente
 
-**Análise de código:**
-```
-Analise o arquivo app.py como um especialista em AppSec. Encontre as falhas de segurança e me ajude a entender o impacto.
-```
+O agente foi configurado para rodar através do harness **Hermes Agent**.
 
-**Cenário de infraestrutura:**
-```
-Quero analisar uma vulnerabilidade. Tenho um servidor Ubuntu exposto na internet. Não sei por onde começar.
+### 1. Pré-requisitos
+Ter o Python e o Hermes instalados na máquina:
+```powershell
+iex (irm https://hermes-agent.nousresearch.com/install.ps1)
 ```
 
-O agente pedirá o contexto antes de qualquer análise — esse é o comportamento central da skill.
+### 2. Executando no terminal
+Abra o terminal do VS Code **dentro da pasta do projeto** (obrigatório para que o Hermes carregue as skills locais):
+```powershell
+cd caminho/para/dio-agent
+hermes
+```
 
-### A melhoria escolhida: Relatório padronizado
+### 3. Exemplos de prompts para testar
+- **Análise de código:**  
+  `"Analise o arquivo app.py como um especialista em AppSec e me aponte as falhas de segurança sem me dar o código pronto."`
+- **Análise de cenário/infraestrutura:**  
+  `"Quero analisar uma vulnerabilidade. Tenho um servidor Ubuntu exposto na internet. Não sei por onde começar."`
 
-Ao final de cada análise, o agente emite um relatório estruturado com severidade CVSS, tríade CIA e mapeamento MITRE ATT&CK — permitindo comparar casos com os mesmos critérios e documentar análises no padrão de times de segurança reais.
+---
 
-### 📸 Evidências dos Testes e Validação Prática
+## 💡 A Melhoria Escolhida: Relatório Padronizado de Análise
 
-Para comprovar a eficiência da especialização, realizamos os testes práticos de exploração, mitigação e comportamento do agente:
+Como melhoria em relação ao modelo base apresentado nas aulas, defini na skill que toda análise finalizada deve gerar um **Relatório Padronizado de Análise de Vulnerabilidade**.
 
-#### 1. Exploração do SQL Injection vs Mitigação (Código)
+Esse relatório avalia:
+- **Classificação OWASP** e Mapeamento para **MITRE ATT&CK**;
+- **Impacto, Probabilidade e Severidade** (baseado na metodologia CVSS);
+- **Pilares da Tríade CIA afetados** (Confidencialidade, Integridade e Disponibilidade);
+- **Orientação de correção defensiva**.
 
-| Cenário | Entrada | Resultado Obtido | Status |
-|---|---|---|:---:|
-| **`app.py` (Vulnerável)** | `admin' --` / `qualquercoisa` | `✅ Login bem-sucedido!` | 🔴 **Vulnerabilidade Confirmada** (Bypass de autenticação) |
-| **`app_secure.py` (Mitigado)** | `admin` / `senha123` | `Login bem-sucedido!` | 🟢 **Autenticação Legítima Funcional** |
-| **`app_secure.py` (Mitigado)** | `admin' --` / `qualquercoisa` | `Usuário ou senha incorretos.` | 🟢 **Ataque Bloqueado** (Parametrização + Bcrypt) |
+Dessa forma, o resultado sai sempre no mesmo formato profissional, facilitando a comparação entre diferentes cenários e código.
 
-##### Teste do código vulnerável (`app.py`):
+---
+
+## 📸 Evidências dos Testes Práticos
+
+Para validar todo o fluxo, realizei os testes tanto na aplicação quanto no comportamento do agente:
+
+### 1. Teste no Terminal: Ataque vs Código Seguro
+No laboratório prático, validei a exploração da falha e a posterior correção:
+
+- **Código Vulnerável (`app.py`):** O ataque com payload `admin' --` ignora a checagem de senha e faz o bypass do login com sucesso.
+- **Código Mitigado (`app_secure.py`):** O mesmo ataque é bloqueado com *"Usuário ou senha incorretos"*, e o acesso só é permitido com a credencial legítima.
+
+#### Teste do código vulnerável:
 ![Testar o código vulnerável](prints/05-codigo-vulneravel.png)
 
-##### Teste do código seguro (`app_secure.py`):
+#### Teste do código seguro com credencial válida:
 ![Testar o código seguro](prints/04-codigo-seguro.png)
 
-##### Tentativa de ataque SQL Injection bloqueada:
+#### Bloqueio do ataque de SQL Injection:
 ![Ataque de SQL Injection](prints/03-ataque-sqli.png)
 
 ---
 
-#### 2. Comportamento do Agente: Chat Genérico vs DIO Agent Especializado
+### 2. Comportamento do DIO Agent no Hermes
+Ao testar o agente no terminal com o cenário do servidor exposto, ele demonstrou a postura correta esperada de um profissional: **não sugeriu comandos precipitados** e primeiro perguntou sobre o nível de acesso e o contexto do ambiente.
 
-A Expert Isadora destaca a diferença crucial entre uma IA comum e um agente especializado por arquivos:
-
-##### Perguntas de contexto antes de qualquer ação:
+#### Agente solicitando contexto antes de agir:
 ![Perguntas de Contexto](prints/01-perguntas-contexto.png)
 
-```
-┌─────────────────────────────────────────────────────────────────────────────┐
-│ ❌ IA Genérica (sem a skill)                                                │
-├─────────────────────────────────────────────────────────────────────────────┤
-│ Usuário: "Tenho um servidor Ubuntu exposto na internet. O que eu faço?"     │
-│ IA: [Gera imediatamente dezenas de comandos: iptables, fail2ban, nmap, etc. │
-│ sem perguntar se o servidor é seu, qual o escopo ou se você tem permissão]  │
-└─────────────────────────────────────────────────────────────────────────────┘
-                                      VS
-┌─────────────────────────────────────────────────────────────────────────────┐
-│ ✅ DIO Agent Especializado (com a skill vulnerability-analysis)             │
-├─────────────────────────────────────────────────────────────────────────────┤
-│ Usuário: "Tenho um servidor Ubuntu exposto na internet. O que eu faço?"     │
-│ DIO Agent: "Como se trata de um servidor real exposto na internet, o        │
-│ primeiro passo não é atacar — é mapear o que realmente está visível e       │
-│ analisar de forma defensiva. Para eu te orientar sem ficar genérico:        │
-│ 1. Qual acesso autorizado você tem?                                         │
-│    - Somente leitura remota (SSH)?                                          │
-│    - Acesso root/admin no próprio servidor?                                 │
-│    - Ou está fora dele e só consegue ver o IP/porta de fora?"               │
-└─────────────────────────────────────────────────────────────────────────────┘
-```
-
-#### 3. Carregamento Autônomo da Skill no Hermes
-
-Quando questionado sobre segurança, o Hermes identifica e carrega a skill sozinho:
-
-![Hermes com Skill Ativa](prints/02-hermes.png)
-
-```text
-❯ Quero analisar uma vulnerabilidade. Tenho uma API Node.js exposta. O que você recomenda?
-📚 Skill vulnerability-analysis
-☤ Hermes: "Perfeito, vamos seguir o fluxo de AppSec. Primeiro eu preciso do código alvo: 
-pode colar o trecho da API, indicar os arquivos/pasta do projeto Node.js ou apontar o 
-repositório? Se for um sistema externo/live, eu começo por mapear o que está realmente 
-exposto antes de procurar falhas internas."
-```
+#### Reconhecimento e carregamento autônomo da skill no Hermes:
+![Hermes](prints/02-hermes.png)
 
 ---
 
-### Referências
+## 👨‍💻 Autor
 
-- [OWASP Top 10](https://owasp.org/Top10/)
-- [MITRE ATT&CK](https://attack.mitre.org/)
-- [CVSS v3.1 Specification](https://www.first.org/cvss/specification-document)
-
----
-
+Projeto desenvolvido por **Gustavo Rosário Nunes** para o Desafio de Projeto da DIO.
